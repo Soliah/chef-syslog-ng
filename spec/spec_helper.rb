@@ -1,6 +1,6 @@
-require 'chefspec'
-require 'chefspec/berkshelf'
-require 'chefspec/cacher'
+require "chefspec"
+require "chefspec/berkshelf"
 
 RSpec.configure do |config|
+  config.log_level = :warn
 end

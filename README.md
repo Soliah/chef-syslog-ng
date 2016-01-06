@@ -1,26 +1,33 @@
-# syslog-ng cookbook
-> A [Chef](http://getchef.com/) cookbook to install and configure [syslog-ng](https://wiki.archlinux.org/index.php/Syslog-ng).
+[![Build Status](https://travis-ci.org/Soliah/chef-syslog-ng.svg)](https://travis-ci.org/Soliah/chef-syslog-ng)
 
-[![Build Status](http://ci.ldk.io/logankoester/chef-syslog-ng/badge)](http://ci.ldk.io/logankoester/chef-syslog-ng/)
-[![Gittip](http://img.shields.io/gittip/logankoester.png)](https://www.gittip.com/logankoester/)
+# chef-timezone
 
-## Installation
+Setup `syslog-ng` on Ubuntu and Debian
 
-Using [Berkshelf](http://berkshelf.com/), add the `syslog-ng` cookbook to your Berksfile.
+## Requirements
 
-```ruby
-cookbook 'syslog-ng', github: 'logankoester/chef-syslog-ng', branch: 'master'
-```
-Then run `berks` to install it.
+Only tested to be working on the following Ubuntu and Debian versions below, but may work on earlier versions too.
 
-## Usage
-
-Set the required attributes, and add the `syslog-ng::default` recipe to your run list.
+- Ubuntu 14.04
+- Ubuntu 12.04
+- Debian 8.2
+- Debian 8.1
+- Debian 8.0
 
 ## Attributes
 
-See `attributes/default.rb` for details
+None
 
-## Author
+## LWRP
 
-Copyright (c) 2014 [Logan Koester](http://logankoester.com). Released under the MIT license. See `LICENSE` for details.
+## Usage
+
+Just include `syslog-ng` in your node's `run_list`:
+
+```json
+{
+  "run_list": [
+    "recipe[syslog-ng]"
+  ]
+}
+```
