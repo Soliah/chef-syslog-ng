@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Soliah/chef-syslog-ng.svg)](https://travis-ci.org/Soliah/chef-syslog-ng)
 
-# chef-timezone
+# chef-syslog-ng
 
 Setup `syslog-ng` on Ubuntu and Debian
 
