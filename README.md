@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Soliah/chef-syslog-ng.svg)](https://travis-ci.org/Soliah/chef-syslog-ng)
+[![Circle CI](https://circleci.com/gh/Soliah/chef-syslog-ng.svg?style=svg)](https://circleci.com/gh/Soliah/chef-syslog-ng)
 
 # chef-syslog-ng
 
