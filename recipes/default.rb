@@ -5,6 +5,13 @@
   end
 end
 
+# Make sure to remove rsyslog
+%w(rsyslog-gnutls rsyslog).each do |pkg|
+  package pkg do
+    action :remove
+  end
+end
+
 template "/etc/syslog-ng/syslog-ng.conf" do
   mode "0644"
   owner "root"
@@ -17,3 +24,5 @@ service "syslog-ng" do
   provider Chef::Provider::Service::Init::Debian
   action [:enable, :start]
 end
+
+include_recipe "syslog-ng::papertrail" if node["syslog-ng"]["papertrail"]["install_ca_bundle"]
