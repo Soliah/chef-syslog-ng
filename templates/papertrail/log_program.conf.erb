@@ -1,14 +1,10 @@
 # vi:syntax=syslog-ng
 # Managed by Chef. Local modifications will be overwritten!
 
-<% if @tags %>
-filter f_<%= @name %> { tags(<%= @tags %>); };
-<% end %>
+filter f_<%= @name %> { program(<%= @program %>); };
 
 log {
   source(s_src);
-  <% if @tags %>
   filter(f_<%= @name %>);
-  <% end %>
   destination(d_<%= @destination %>);
 };
