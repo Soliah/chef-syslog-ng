@@ -1,0 +1,9 @@
+# vi:syntax=syslog-ng
+# Managed by Chef. Local modifications will be overwritten!
+
+source s_<%= @name %> { file("<%= @file %>"); };
+
+log {
+  source(s_<%= @name %>);
+  destination(d_<%= @destination %>);
+};

@@ -1,3 +1,5 @@
+extend SyslogNg
+
 # Work around for https://bugs.launchpad.net/ubuntu/+source/syslog-ng/+bug/1242173
 %w(syslog-ng-core syslog-ng).each do |pkg|
   package(pkg) do
@@ -19,10 +21,6 @@ template "/etc/syslog-ng/syslog-ng.conf" do
   notifies :restart, "service[syslog-ng]"
 end
 
-service "syslog-ng" do
-  supports status: true, start: true, stop: true, restart: true, reload: true
-  provider Chef::Provider::Service::Init::Debian
-  action [:enable, :start]
-end
+declare_syslog_ng_service [:enable, :start]
 
 include_recipe "syslog-ng::papertrail" if node["syslog-ng"]["papertrail"]["install_ca_bundle"]
