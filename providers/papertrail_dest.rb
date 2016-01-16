@@ -5,7 +5,7 @@ action :create do
     mode 0664
     content <<-EOS
 destination d_#{new_resource.name} {
-  tcp("#{new_resource.host}.papertrailapp.com" port(#{new_resource.port}) tls(peer-verify(optional-untrusted) ca_dir("/etc/syslog-ng/cert.d")) );
+  tcp("#{new_resource.host}.papertrailapp.com" port(#{new_resource.port}) tls(ca_dir("/etc/syslog-ng/cert.d")) );
 };
     EOS
   end

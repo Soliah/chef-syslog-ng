@@ -20,6 +20,12 @@ None
 
 ## LWRP
 
+### syslog_ng_papertrail_dest
+
+### syslog_ng_papertrail_file_log
+
+### syslog_ng_papertrail_program_log
+
 ## Usage
 
 Just include `syslog-ng` in your node's `run_list`:

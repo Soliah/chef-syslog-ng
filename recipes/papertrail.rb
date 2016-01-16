@@ -1,7 +1,8 @@
 directory "/etc/syslog-ng/cert.d" do
   action :create
-  mode "0644"
+  mode "0755"
   owner "root"
+  group "root"
 end
 
 execute "extract_ca_bundle" do
@@ -13,6 +14,9 @@ end
 remote_file "/tmp/papertrail-bundle.tar.gz" do
   source node["syslog-ng"]["papertrail"]["ca_bundle"]
   checksum node["syslog-ng"]["papertrail"]["ca_bundle_checksum"]
-  mode 0644
+  mode "0644"
+  owner "root"
+  group "root"
+  action :create_if_missing
   notifies :run, "execute[extract_ca_bundle]"
 end
