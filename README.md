@@ -6,13 +6,9 @@ Setup `syslog-ng` on Ubuntu and Debian
 
 ## Requirements
 
-Only tested to be working on the following Ubuntu and Debian versions below, but may work on earlier versions too.
+Only tested to be working on the following Ubuntu versions below, but may work on earlier versions too.
 
 - Ubuntu 14.04
-- Ubuntu 12.04
-- Debian 8.2
-- Debian 8.1
-- Debian 8.0
 
 ## Attributes
 
