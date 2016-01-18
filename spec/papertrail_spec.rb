@@ -15,7 +15,9 @@ describe "syslog-ng::papertrail" do
 
   it "downloads the CA bundle" do
     expect(chef_run).to create_remote_file_if_missing("/tmp/papertrail-bundle.tar.gz")
-    file = chef_run.remote_file("/tmp/papertrail-bundle.tar.gz")
-    expect(file).to notify("execute[extract_ca_bundle]").to(:run)
+  end
+
+  it "extracts the CA bundle" do
+    expect(chef_run).to run_execute("extract_ca_bundle")
   end
 end

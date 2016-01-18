@@ -14,13 +14,21 @@ end
   end.run_action(:remove)
 end
 
-declare_syslog_ng_service [:enable, :start]
+@svc = service "syslog-ng" do
+  supports status: true, start: true, stop: true, restart: true, reload: true
+  provider Chef::Provider::Service::Init::Debian
+  action :enable
+end
+
+@svc.run_action(:enable)
 
 template "/etc/syslog-ng/syslog-ng.conf" do
   mode "0644"
   owner "root"
   source "syslog-ng.conf.erb"
-  notifies :restart, "service[syslog-ng]"
+  notifies :restart, "service[syslog-ng]", :immediately
 end.run_action(:create)
+
+@svc.run_action(:start)
 
 include_recipe "syslog-ng::papertrail" if node["syslog-ng"]["papertrail"]["install_ca_bundle"]
