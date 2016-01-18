@@ -3,7 +3,7 @@ directory "/etc/syslog-ng/cert.d" do
   mode "0755"
   owner "root"
   group "root"
-end
+end.run_action(:create)
 
 execute "extract_ca_bundle" do
   command "tar xzvf /tmp/papertrail-bundle.tar.gz"
@@ -18,5 +18,5 @@ remote_file "/tmp/papertrail-bundle.tar.gz" do
   owner "root"
   group "root"
   action :create_if_missing
-  notifies :run, "execute[extract_ca_bundle]"
-end
+  notifies :run, "execute[extract_ca_bundle]", :immediately
+end.run_action(:create)
