@@ -3,7 +3,7 @@ require "serverspec"
 set :backend, :exec
 
 describe "syslog-ng::default" do
-  describe package("syslog-ng") do
+  describe package("syslog-ng-core") do
     it { is_expected.to be_installed }
   end
 

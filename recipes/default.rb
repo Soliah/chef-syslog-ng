@@ -1,6 +1,11 @@
 extend SyslogNg
 
-# Work around for https://bugs.launchpad.net/ubuntu/+source/syslog-ng/+bug/1242173
+apt_repository "syslog-ng" do
+  uri "http://download.opensuse.org/repositories/home:/laszlo_budai:/syslog-ng/xUbuntu_14.04"
+  key "http://download.opensuse.org/repositories/home:/laszlo_budai:/syslog-ng/Debian_8.0/Release.key"
+  components ["./"]
+end.run_action(:add)
+
 %w(syslog-ng-core syslog-ng).each do |pkg|
   package(pkg) do
     action :install
@@ -26,7 +31,6 @@ template "/etc/syslog-ng/syslog-ng.conf" do
   mode "0644"
   owner "root"
   source "syslog-ng.conf.erb"
-  notifies :restart, "service[syslog-ng]", :immediately
 end.run_action(:create)
 
 @svc.run_action(:start)
