@@ -22,7 +22,10 @@ options { chain_hostnames(off); flush_lines(0); use_dns(no); use_fqdn(no);
 #
 source s_src {
   <% unless node["virtualization"]["systems"]["docker"] %>
-       system();
+       # Work around for https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1349883
+       unix-dgram("/dev/log");
+       file("/proc/kmsg" program-override("kernel") flags(kernel) keep_timestamp(no));
+       # system();
   <% end %>
        internal();
 };
